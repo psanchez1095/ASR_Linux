@@ -1,0 +1,246 @@
+
+ifconfig - versión antigua de iplink, se usa para configurar una red
+
+chmod    - cambia quién puede acceder a un archivo (cambia los permisos)
+
+chown    - “change owner” cambia el usuario/grupo propietario de un fichero
+
+ping     - envía una señal para comprobar las conexiones con otros equipos/dispositivos,
+           entre otras cosas, pero no se considera un comando básico y no viene por defecto
+           
+nmap     - hace un reconocimiento de toda la red pero, al igual que ping, no viene por
+           defecto
+           
+wget     - sirve para saber si una url funciona y acceder a su información
+
+dd       - se usa para copiar discos
+
+history  - historial de comandos ejecutados
+
+curl     - para trabajar con url’s
+
+Sistema de archivos:
+ls - lista el contenido de un archivo
+
+cd - Este comando se utiliza para cambiar de directorio
+
+pwd  (Print Working Directory) – Muestra el nombre de archivo completo del directorio de
+trabajo actual
+
+cp - Sirve para copiar un archivo o directorio, enlaces, permisos
+
+rm - Sirve para eliminar archivos. Si se usa recursivamente también borra directorios
+
+mv - Sirve para mover o renombrar los archivos y directorios en su sistema de archivos
+del so
+
+touch - Actualiza los registros de fecha y hora, con la fecha y hora actual de los ficheros
+indicados como argumento. Si el fichero no existe, el comando touch lo crea. Su uso más
+frecuente es para crear archivos
+
+fstyp – Analiza el tipo de sistema de archivos de un dispositivo específico
+
+df – Muestra el uso del sistema de archivos en dispositivos que estén montados
+
+du – Muestra información del uso del disco con archivos y directorios
+
+cat – Deriva de concatenar y permite crear, fusionar, mostrar, copiar archivos de texto en
+un documento nuevo, entre otras cosas
+
+Split – Permite dividir un fichero en partes de un tamaño máximo determinado por el
+usuario
+
+Gestión del sistema de archivos
+
+mount – Monta un sistema de archivos
+
+umount – Desmonta un sistema de archivos
+
+fsck – Verificar la integridad del sistema de archivos
+
+growfs – Expandir el sistema de archivos
+
+tune2fs – Ajustar los parámetros del sistema de archivos (solo admite ext2 y ext3)
+
+mkfs – Crear un nuevo sistema de archivos
+
+dd - Permite copiar dispositivos (CD, DVD, partición), copias de seguridad o imágenes de
+disco
+
+Redes:
+
+iptables – Gestión de las reglas del firewall
+
+netstat – Información y estadísticas de la red
+
+traceroute – Como su propio nombre indica, traza las rutas ICMP a un host remoto
+
+ifconfig - para configurar y visualizar interfaces de red
+
+ping - Usa el protocolo ICMP para comprobar la comunicación con la IP objetivo
+
+nmap - Mapeo de redes y de su configuración
+
+curl (Client URL) - Los comandos de Curl están diseñados para funcionar como una
+forma de verificar la conectividad a las URL y es útil si tienes que transferir datos hacia, o
+desde un servidor independientemente del protocolo utilizado
+
+wget (WWW + get) - Es una herramienta informática creada por el Proyecto GNU
+Puedes usarlo para recuperar contenido y archivos de varios servidores web
+
+Comando: yum
+
+Funcionalidad: se usa para instalar, actualizar, borrar o manipular los paquetes instalados en los
+sistemas Linux que usan RPM Package Manager
+
+Diferencia con DNF: DNF es la siguiente versión de YUM, un manejador de paquetes para
+distribuciones Linux basadas en RPM. Casi no mantiene la compatibilidad CLI con YUM y define
+una nueva API estricta para extensiones y plugins.
+
+Opciones:
+
+Instalar la última versión del paquete indicado, pide por confirmación
+yum install <package> 
+
+Listar todos los paquetes del sistema
+yum list
+
+Listar los paquetes disponibles para actualizar
+yum check-update
+
+Comando: dnf
+
+Es el sistema de administración de paquetes predeterminado en la mayoría de las distribuciones
+de Linux basadas en RPM ahora.
+
+Funcionalidad: DNF descarga paquetes de repositorios, instala, desinstala y actualiza paquetes.
+Realiza la resolución automática de dependencias para los paquetes que está instalando,
+actualizando o eliminando e instala todos los paquetes necesarios para cumplir con los requisitos
+de dependencia.
+
+
+Opciones:
+
+Listar todos los paquetes instalados y disponibles
+sudo dnf list all
+
+Listar todos los paquetes instalados
+sudo dnf list installed
+
+Listar todos los paquetes disponibles
+sudo dnf list available
+
+Eliminar un paquete
+sudo dnf remove package_name
+
+Instalar un solo paquete y todas sus dependencias no instaladas.
+Si pones con espacios más paquetes puedes instalar más paquetes simultáneamente.
+
+sudo dnf install package_name
+
+Actualizar un solo paquete
+sudo dnf upgrade package_name
+
+Revisar si tienes que actualizar
+sudo dnf check-update package_name
+
+
+DNF and RPM commands usages
+
+Buscar actualizaciones 
+
+dnf [options] check-updates <package>
+
+rpm --aid, rpm -F
+
+
+Actualizar paquetes
+
+dnf [options] upgrade <package>
+
+rpm -u <package> (if is already installed)
+
+
+Buscar paquetes
+
+dnf search <package>
+rpm -qa | grep <package>
+rpm -qi <package>
+
+Obtener información sobre repositorios
+
+dnf repolist
+rpm -qa -qf '%{NAME} %VENDOR}\n'
+
+Instalar paquetes
+
+dnf install <package>
+rpm -ivh <package> (--nodeeps ignore dependencies)
+
+Desinstalar paquetes
+
+dnf remove <package>
+rpm -e <package>
+
+Llevar, conocer la historia de las actualizaciones realizadas
+
+dnf history <package>
+rpm -
+
+Hacer un "downgrade"
+dnf downgrade <package>
+rpm -Uvh --oldpackage <package> (-U do upgrade | --oldpackage allows to install 
+previous package)
+
+
+Configurar el gestor de paquetes
+
+dnf config-manager
+rpm -qc <package>
+
+///////////////////////////////////////////////////////////////////////////////////
+
+Cómo sé que el paquete que me he bajado no has sido modificado
+
+rpm –checksig package.rpm
+
+Qué ficheros ha instalado un paquete (comandos por tipo de paquetes):
+
+Paquetes RPM: rpm -ql package
+Paquetes Deb: dpkg -L package
+
+Cómo saber si tengo instalada la última versión de un paquete
+
+dnf list bash muestra si existen actualizaciones para un paquete ( en este caso el paquete bash)
+
+Cómo bajarme e instalar un paquete no-oficial
+
+Descarga de paquete: curl -O <package url>
+Instalación de paquete: rpm -ivh <package>
+
+Cómo añadir nuevos repositorios:
+
+dnf config-manager --add-repo repository: añade el repositorio
+dnf config-manager --add-repo /etc/yum.repos.d/fedora_extras.repo: reemplaza repositorio por el path deseado
+dnf config-manager --set-enabled repository: lo activa
+
+Cómo saber los paquetes de los que depende un paquete
+
+rpm -qpR <package>
+rpm -qR <package>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
